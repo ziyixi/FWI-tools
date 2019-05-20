@@ -4,6 +4,7 @@ import os
 import sh
 import glob
 import click
+import subprocess
 
 
 @click.command()
@@ -22,8 +23,9 @@ def refine_structure(old_path, new_path):
 
     for thekey in keys:
         fname = f"{new_path}/{thekey}"
-        sh.mkdir(fname)
-        sh.mv(f"{old_path}/*/*/{thekey}*SEED", fname)
+        sh.mkdir("-p", fname)
+        # sh.mv(f"{old_path}/*/*/{thekey}*SEED", fname)
+        subprocess.call(f"mv {old_path}/*/*/{thekey}*SEED {fname}", shell=True)
 
 
 if __name__ == "__main__":
