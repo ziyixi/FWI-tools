@@ -14,7 +14,7 @@ comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 logger.add("process_seed.log", format="{time} {level} {message}",
-           filter="process_seed", level="INFO", enqueue=True)
+           filter="process_seed", level="INFO")
 os.putenv("SAC_DISPLAY_COPYRIGHT", '0')
 
 
@@ -24,17 +24,17 @@ def process_seeds(event_paths):
     logger.info(f"[rank:{rank}] start to rdseed")
     rdseed(event_path_this_rank)
 
-    logger.info(f"[rank:{rank}] start to merge")
-    merge(event_path_this_rank)
+    # logger.info(f"[rank:{rank}] start to merge")
+    # merge(event_path_this_rank)
 
-    logger.info(f"[rank:{rank}] start to rename")
-    rename(event_path_this_rank)
+    # logger.info(f"[rank:{rank}] start to rename")
+    # rename(event_path_this_rank)
 
-    logger.info(f"[rank:{rank}] start to transfer")
-    transfer(event_path_this_rank)
+    # logger.info(f"[rank:{rank}] start to transfer")
+    # transfer(event_path_this_rank)
 
-    logger.info(f"[rank:{rank}] start to rotate")
-    rotate(event_path_this_rank)
+    # logger.info(f"[rank:{rank}] start to rotate")
+    # rotate(event_path_this_rank)
 
     logger.success("[rank:{rank}] finished!")
 
@@ -219,7 +219,7 @@ def rotate(event_path_this_rank):
 
 
 @click.command()
-@click.option('--main_path', required=True, help="the data directory", type="str")
+@click.option('--main_path', required=True, help="the data directory", type=str)
 def main(main_path):
     paths = glob.glob(f"{main_path}/*")
     process_seeds(paths)
