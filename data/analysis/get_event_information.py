@@ -24,3 +24,7 @@ def main(basepath):
         df.loc[i] = [value.split(
             "/")[-2], 0, thedata.stats.sac.evla, thedata.stats.sac.evlo, thedata.stats.sac.mag, thedata.stats.sac.evdp]
     df.to_pickle("./event.pkl")
+
+
+if __name__ == "__main__":
+    main()
