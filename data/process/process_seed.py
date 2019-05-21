@@ -24,17 +24,17 @@ def process_seeds(event_paths):
     logger.info(f"[rank:{rank}] start to rdseed")
     rdseed(event_path_this_rank)
 
-    # logger.info(f"[rank:{rank}] start to merge")
-    # merge(event_path_this_rank)
+    logger.info(f"[rank:{rank}] start to merge")
+    merge(event_path_this_rank)
 
-    # logger.info(f"[rank:{rank}] start to rename")
-    # rename(event_path_this_rank)
+    logger.info(f"[rank:{rank}] start to rename")
+    rename(event_path_this_rank)
 
-    # logger.info(f"[rank:{rank}] start to transfer")
-    # transfer(event_path_this_rank)
+    logger.info(f"[rank:{rank}] start to transfer")
+    transfer(event_path_this_rank)
 
-    # logger.info(f"[rank:{rank}] start to rotate")
-    # rotate(event_path_this_rank)
+    logger.info(f"[rank:{rank}] start to rotate")
+    rotate(event_path_this_rank)
 
     logger.success("[rank:{rank}] finished!")
 
@@ -149,7 +149,7 @@ def rotate(event_path_this_rank):
         stdin_list = []
         for key in sets:
             # if Z component exists
-            Z = f"{key}Z.sac"
+            Z = f"{key}Z.SAC"
             if not os.path.exists(Z):
                 logger.error(
                     f"[rank:{rank},dir:{thedir}] vertical component missing for {key}")
