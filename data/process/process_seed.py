@@ -21,8 +21,9 @@ os.putenv("SAC_DISPLAY_COPYRIGHT", '0')
 def process_seeds(event_paths):
     event_path_this_rank = generate_paths(event_paths)
 
-    logger.info(f"[rank:{rank}] start to rdseed")
-    rdseed(event_path_this_rank)
+    # comment as having done this procedure
+    # logger.info(f"[rank:{rank}] start to rdseed")
+    # rdseed(event_path_this_rank)
 
     logger.info(f"[rank:{rank}] start to merge")
     merge(event_path_this_rank)
@@ -100,8 +101,8 @@ def rename(event_path_this_rank):
         sh.cd(thedir)
         for fname in glob.glob("*.SAC"):
             net, sta, loc, chn = fname.split('.')[6:10]
-            logger.info(
-                f"[rank:{rank},dir:{thedir}] rename {fname} to {net}.{sta}.{loc}.{chn}.SAC")
+            # logger.info(
+            #     f"[rank:{rank},dir:{thedir}] rename {fname} to {net}.{sta}.{loc}.{chn}.SAC")
             sh.mv(fname, f"{net}.{sta}.{loc}.{chn}.SAC")
         sh.cd(root_path)
 
@@ -121,8 +122,8 @@ def transfer(event_path_this_rank):
                     f"[rank:{rank},dir:{thedir}] error in transfering for {sacfile} in seeking {pz}")
                 continue
 
-            logger.info(
-                f"[rank:{rank},dir:{thedir}] transfer {sacfile} with {pz}")
+            # logger.info(
+            #     f"[rank:{rank},dir:{thedir}] transfer {sacfile} with {pz}")
             stdin_list.append(f"r {sacfile}\n")
             stdin_list.append(f"rmean; rtr; taper \n")
             stdin_list.append(
@@ -199,7 +200,7 @@ def rotate(event_path_this_rank):
             prefix = key[:-2]
             R, T, Z0 = prefix + '.R', prefix + '.T', prefix + '.Z'
 
-            logger.info(f"[rank:{rank},dir:{thedir}] rotate {key}")
+            # logger.info(f"[rank:{rank},dir:{thedir}] rotate {key}")
             stdin_list.append(f"cut {begin} {end} \n")
             stdin_list.append(f"r {E} {N} \n")
             stdin_list.append(f"rotate to gcp \n")
