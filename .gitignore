@@ -1,5 +1,6 @@
 *.log
-settings.json
+*json*
 *log*
 *pkl*
 *slurm*
+*cmts*
