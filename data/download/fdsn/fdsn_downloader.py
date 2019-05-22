@@ -12,4 +12,4 @@ logger.add("fdsn_downloader.log", format="{time} {level} {message}",
            filter="process_seed", level="INFO")
 
 
-def start_obspyDMT_this_rank
+def start_obspyDMT_this_rank():
