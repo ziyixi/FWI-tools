@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sod>
+    <eventArm>
+    <CSVEventSource>
+        <filename>event_info.csv</filename>
+    </CSVEventSource>
+    <printlineEventProcess/>
+    </eventArm>
+    <networkArm>
+    <!-- networkArm 全部内容 -->
+    </networkArm>
+    <waveformArm>
+    <!-- waveformArm 全部内容 -->
+    </waveformArm>
+</sod>
